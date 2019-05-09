@@ -1,5 +1,7 @@
 package entitySupport;
 
+import invokeSupport.DataUtil;
+
 import java.util.Map;
 
 /**
@@ -18,23 +20,11 @@ import java.util.Map;
  */
 
 public abstract class BaseEntity {
-    /**
-     * This table name of this entity in databases
-     */
-    private String entityTableName;
 
     /**
      * This table's primary keys
      */
     private String[] primaryKeys;
-
-    public String getEntityTableName() {
-        return entityTableName;
-    }
-
-    public void setEntityTableName(String entityTableName) {
-        this.entityTableName = entityTableName;
-    }
 
     public String[] getPrimaryKeys() {
         return primaryKeys;
@@ -42,6 +32,10 @@ public abstract class BaseEntity {
 
     public void setPrimaryKeys(String[] primaryKeys) {
         this.primaryKeys = primaryKeys;
+    }
+
+    public String getTableName() {
+        return DataUtil.getClassName(this);
     }
 
     /**
